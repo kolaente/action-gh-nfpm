@@ -1,4 +1,6 @@
-#!/bin/sh -l
+#!/bin/bash
+
+set -xe
 
 if [ "$INPUT_CONFIG" != "" ] && [ "$INPUT_PACKAGER" != "" ]; then
     if [ "$INPUT_TARGET" != "" ]; then
