@@ -10,7 +10,7 @@ inputs:
     required: false
   target:
     description: 'Package target. Can be a folder'
-    required: false
+    required: true
     default: ''
   packager:
     description: 'Packager type: deb|rpm|apk|archlinux'
@@ -19,7 +19,7 @@ inputs:
   nfpm_version:
     description: 'nFPM version'
     required: false
-    default: '2.22.2'
+    default: '2.41.2'
 outputs:
   package:
     description: "Created package name"
@@ -33,7 +33,7 @@ runs:
     shell: bash
   - run: nfpm --version
     shell: bash
-  - run: entrypoint.sh
+  - run: nfpm pkg -f $INPUT_CONFIG -p $INPUT_PACKAGER -t $INPUT_TARGET
     id: run-nfpm
     shell: bash
     env:
